@@ -38,8 +38,9 @@
                <td>{{$value.tc_status==0?"启用":"注销"}}</td>
                <td>{{$value.tc_join_date}}</td>
                <td>{{$value.tc_birthday}}</td>
-                <td>
-                    <button class="btn btn-success">查看</button>
+                <!--将tc_id写入到表格-->
+                <td tc_id="{{$value.tc_id}}">
+                    <button class="btn btn-success btn-show">查看</button>
                     <button class="btn btn-primary">编辑</button>
                     <button class="btn btn-info">{{$value.tc_status==0?"注销":"启用"}}</button>
                 </td>

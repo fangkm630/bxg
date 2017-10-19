@@ -7,8 +7,10 @@ define([
     //text插件的路径 ! 模板文件的路径(不能省略.html后缀名)
     "text!tpls/teacherListTpl.html",
     //arttemplate模板引擎
-    "art"
-],function ($,teacherListTpl,art) {
+    "art",
+    //查看讲师信息模块
+    "teacher/show"   //也可以用./show写
+],function ($,teacherListTpl,art,teacherShow) {
     //记得把结果返回!!!!!!!!!!!!!!!!!---------------------
     return function () {
         //    怎么完成渲染讲师列表功能？
@@ -33,8 +35,16 @@ define([
                 var html = art.render(teacherListTpl,{
                     r:result
                 });
+                // 将时间绑定在这个心创建的特定的panel中
+                var $panel =$(html);
+                //模板中的.btn-show被点击触发事件
+                $panel.on("click",".btn-show",function () {
+                //    通过适当的方式获取对应的讲师id-----》teacherListTpl模板中获取数据时id存储在对应表格中
+                    var tc_id =$(this).parent().attr("tc_id");
+                    teacherShow(tc_id);
+                })
                 //    把真实的内容放到页面上
-                $(".main").html(html);
+                $(".main").html($panel);
             }
         })
     }

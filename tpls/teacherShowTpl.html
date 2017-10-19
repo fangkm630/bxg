@@ -1,0 +1,68 @@
+<div class="modal fade" tabindex="-1" role="dialog">
+    <!--
+    table 合并单元格属性 用在td标签中
+
+      添加 colspan ="2" 水平方向合并行2个单元格
+
+      添加 rowspan ="4" 垂直方向上合并4个单元格
+
+      模板引擎中 @ 的用处  ，放在{{@数据名称}} 可以将数据中包含的标签解析出来
+
+
+      图片在表格居中方式，给父元素加
+            text-align: center;vertical-align: middle
+      注意： 调用模态框时，需要把从官网中复制出来的代码中的注释都删除，否则调用后关闭模态框，遮罩层就会出现多个。 同时添加到页面上的模态框代码在关闭后要设置删除，否则每次点击都会在对应的html文件中添加代码，这样会降低页面效率使用。 使用remove() 方法移除
+-->
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">查看讲师</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>用户名</td>
+                        <td>{{tc_name}}</td>
+                        <td>职位</td>
+                        <!--只能看到讲师，写死-->
+                        <td>讲师</td>
+                        <td rowspan="4" style="text-align: center;vertical-align: middle">
+                            <!--<img src="{{tc_avatar}}" alt="" width="80" height="80">-->
+                            {{if tc_avatar==""}}
+                            <img src="imgs/pic.jpg" alt="" width="80" height="80">
+                            {{else}}
+                            <img src="{{tc_avatar}}" alt="" width="80" height="80">
+                            {{/if}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>花名</td>
+                        <td>{{tc_roster}}</td>
+                        <td>入职日期</td>
+                        <td>{{tc_join_date}}</td>
+                    </tr>
+                    <tr>
+                        <td>性别</td>
+                        <td>{{tc_gender==0?"男":"女"}}</td>
+                        <td>出生日期</td>
+                        <td>{{tc_birthday}}</td>
+                    </tr>
+                    <tr>
+                        <td>手机号</td>
+                        <td>{{tc_cellphone}}</td>
+                        <td>邮箱</td>
+                        <td>{{tc_email}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">自我介绍:{{@tc_introduce}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>

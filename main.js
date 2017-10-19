@@ -24,8 +24,12 @@ require.config({
     }
 });
 
-//入口模块
-require(["jquery","teacher/list"], function ($,teacherList) {
+//入口模块 ，所有的jquery插件只需要在入口模块中导入一次即可
+require([
+    "jquery",
+    "teacher/list",
+    "bootstrap"
+], function ($, teacherList) {
 //    实现菜单切换
     $(".list-group").on("click", "a", function () {
         //    根据菜单的内容决定要加载的内容
