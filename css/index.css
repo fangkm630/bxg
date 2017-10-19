@@ -1,0 +1,34 @@
+div.aside {
+    position: fixed;
+    left: 0;
+    top:0;
+    width: 180px;
+    bottom:0;
+    background-color: skyblue;
+}
+div.aside>.profile {
+    width: 100%;
+    height: 150px;
+    background-color: skyblue;
+    overflow: hidden;
+}
+div.aside>.profile>.img-container {
+    margin: 20px auto;
+    width: 80px;
+}
+div.content {
+    position: absolute;
+    left: 180px;
+    top: 0;
+    right: 0;
+    background-color: pink;
+    /*如果容器没有任何内容，那么自动呈现800px高度*/
+    min-height: 800px;
+}
+div.content>.panel {
+    background-color: skyblue;
+    border: 1px solid #ccc;
+}
+th{
+    text-align: center;
+}

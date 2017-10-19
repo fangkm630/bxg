@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    注意 整个文件需要放到服务器中才能打开，不可直接用编译器打开，否则登录不了
+
+-->
+<head>
+    <meta charset="UTF-8">
+    <title>博学谷登录</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+<div class="container">
+    <h3 class="text-center">博学谷管理系统</h3>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">用户名</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="tc_name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" name="tc_pass">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-danger btn-block">登 录</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<script src="js/lib/jquery-2.1.4.js"></script>
+<script>
+    //每一次提交表单的时候，都会触发表单的submit事件
+    $("form").on("submit", function (e) {
+        e.preventDefault();//阻止页面刷新
+    //serialize()方法通过序列化表单值，创建标准的URL编码文本字符串，它的操作对象是代表表单元素集合的jQuery 对象。你可以选择一个或多个表单元素（比如input或文本框），或者 form 元素本身。序列化的值可在生成 AJAX 请求时用于 URL 查询字符串中。
+        var formData = $(this).serialize();
+        //可以获取到表单中输入的信息,但是需要把表单内的输入的表单元素 添加name 属性才能自动获取到，按顺序获取
+        console.log(formData);
+        //tc_name=23&tc_pass=44 输出
+        $.ajax({
+            url:"/api/login",
+            type: "post",
+            data: formData,
+            success: function (res) {
+                //判断数据相应是否是200状态，即请求成功
+                if (res.code == 200) {
+                    //跳转到首页
+                    location.href = "index.html"
+                }
+                console.log(res);
+            },
+                //请求失败调用
+            error: function (res) {
+                console.log(res);
+            }
+        })
+    })
+</script>
+</html>
