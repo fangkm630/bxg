@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script>
+    // 1 工具类插件
+//    $.a1= function () {
+//        alert("a1方法");
+//    }
+//      // 添加多个方法
+//    $.extend({
+//        a2:function () {
+//            alert("a2方法")
+//        },
+//        a3:function () {
+//            alert("a3方法")
+//        }
+//    });
+//    $.a1();
+//    $.a2();
+//    $.a3();
+
+    // 2 DOM操作类查询, 即在fn里面添加方法， 其实fn里面存储了juqery所有方法
+    console.log($.fn);
+    $.fn.f1 =function () {
+        console.log("f1方法");
+    }
+    $.fn.extend({
+        f2:function () {
+            console.log("f2方法");
+        },
+        f3:function () {
+            console.log("f3方法");
+        },
+        f4:function () {
+            console.log("f4方法");
+        },
+    })
+    $('body').f1();
+    $('body').f2();
+</script>
+</body>
+</html>

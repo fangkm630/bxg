@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--bootstrap样式-->
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.css">
+    <!--日期控件样式-->
+    <link rel="stylesheet" href="../assets/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css">
+</head>
+<body>
+
+<input type="text" id="datetimepicker">
+
+</body>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script src="../assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script src="../assets/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script>
+    $('#datetimepicker').datetimepicker({
+        //日期格式化：指定要显示诸如“年-月-日” or "月-日-年"
+        //"HH"表示12小时制的小时数  hh表示24小时制  ii表示分钟数
+        format: 'yyyy-mm-dd',
+
+        weekStart:1,
+
+        //指定最早可以选择的时间
+        startDate:"1949-10-01 08:00",
+        //指定最晚可以选择的时间
+        endDate:"2030-01-01 08:00",
+
+        //指定每周的哪些天不能选择：  比如:"周末不上班的公司"
+        daysOfWeekDisabled:[0,6],
+
+        //当你选择完一个日期之后是否是自动关闭选择器
+        autoclose:true,
+
+        //指定一开始显示的视图:  "month"-->可以看到一个月有多少天  "hour"-->看到当前这个小时有多少个分钟    "day"-->看到今天多少个小时
+//        startView:"hour",
+
+        //最小能看到的视图：
+        minView:"month",
+
+        //是否显示"今天"按钮
+        todayBtn:true,
+
+        //表示今天这个日期是否高亮
+        todayHighlight:true,
+
+        //指定选择器的语言；要想指定语言必须首先导入相应的语言包
+        language:"zh-CN"
+
+    });
+</script>
+</html>

@@ -1,0 +1,44 @@
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <ol class="breadcrumb">
+            <li><a href="#">分类管理</a></li>
+            <li class="active">分类列表</li>
+        </ol>
+        <div class="row">
+            <div class="col-md-1 col-md-offset-10">
+                <button class="btn btn-success btn-add">添加分类</button>
+            </div>
+        </div>
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>分类名称</th>
+                <th>课程数量</th>
+                <th>是否显示</th>
+                <th>排序</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <!--使用each变量数组对象，但是变量出来的是一个对象，所以还需要通过对象点出属性,遍历时有3个属性
+            分别是 index  value arr
+            index 就是数组索引  value就是元素   arr被遍历的数组
+            注意：模板插入项目不能写错，否则会报错。
+            -->
+            {{each result}}
+            <tr class="{{$value.cg_pid==0?'info':''}}"> <!--根据值判断是否添加背景颜色-->
+                <td>{{$value.cg_name}}</td>
+                <td>{{$value.total}}</td>
+                <td>{{$value.cg_is_hide==0?"显示":"隐藏"}}</td>
+                <td>{{$value.cg_order}}</td>
+                <td cg_id="{{$value.cg_id}}">
+                    <button class="btn btn-primary btn-edit">编辑</button>
+                </td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

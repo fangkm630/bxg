@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!--
+ 跨页面传值
+ location.href="页面路径？xx=yy?zz=dd"
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="跳转到1-2">
+<script>
+    var btn = document.querySelector("input");
+    btn.onclick = function () {
+        location.href ="02-跨页面1-2.html"
+    }
+</script>
+</body>
+</html>

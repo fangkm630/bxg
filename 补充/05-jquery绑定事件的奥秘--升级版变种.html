@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .panel {
+           border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div class="panel">
+    <input type="button" value="老的">
+</div>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script>
+    var paner ="<div class='panel'>"
+                +"<input type='button' value='新的'>"
+                +"</div>"
+//    转换成jquery对象,转换后才能绑定事件
+    var $paner =$(paner)
+//    此时是给新添加的按钮元素绑定事件
+    $paner.on("click","input",function () {
+        alert("新的")
+    });
+    $paner.appendTo("body");
+//    $($paner).appendTo("body"); //这样写也可以
+</script>
+</body>
+</html>

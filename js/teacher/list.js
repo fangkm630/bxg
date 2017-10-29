@@ -9,8 +9,11 @@ define([
     //arttemplate模板引擎
     "art",
     //查看讲师信息模块
-    "teacher/show"   //也可以用./show写
-],function ($,teacherListTpl,art,teacherShow) {
+    "teacher/show",   //也可以用./show写
+    "teacher/add",
+    "teacher/edit",
+    "teacher/status",
+],function ($,teacherListTpl,art,teacherShow,teacherAdd,teacherEdit,teacherStatus) {
     //记得把结果返回!!!!!!!!!!!!!!!!!---------------------
     return function () {
         //    怎么完成渲染讲师列表功能？
@@ -18,7 +21,6 @@ define([
 //        --》也就是把页面结构 + 页面数据整合在一起
 //           --》 页面结构 : 模板引擎
 //              --》数据：ajax请求
-//         $(".main").html(teacherListTpl);//这句不需要写，否则会先显示出代码
         $.ajax({
             url:"/api/teacher",
             type:"get",
@@ -37,13 +39,36 @@ define([
                 });
                 // 将时间绑定在这个心创建的特定的panel中
                 var $panel =$(html);
-                //模板中的.btn-show被点击触发事件
+
                 $panel.on("click",".btn-show",function () {
-                //    通过适当的方式获取对应的讲师id-----》teacherListTpl模板中获取数据时id存储在对应表格中
+                //通过适当的方式获取对应的讲师id-----》teacherListTpl模板中获取数据时id存储在对应表格中
                     var tc_id =$(this).parent().attr("tc_id");
+                    //查看讲师
                     teacherShow(tc_id);
+                }).on("click",".btn-add",function () {
+                    //添加讲师
+                    teacherAdd();
+                }).on("click",".btn-edit",function () {
+                    //编辑讲师
+                    var tc_id =$(this).parent().attr("tc_id");
+                    teacherEdit(tc_id);
+                }).on("click",".btn-status",function () {
+                    var $this =$(this);
+                    // 获取页面数据
+                    var tc_id =$this.parent().attr("tc_id");
+                    var tc_status =$this.parent().attr("tc_status");
+                    //把数据传输到模块中
+                    teacherStatus(tc_id,tc_status,function (status) {
+                    //    修改文本状态
+                        $this.parent().siblings(".tc_status").text(status==0?"启用":"注销");
+                    //    修改按钮
+                        $this.text(status==0?"注销":"启用");
+                    //    同步修改存在td上的tc_status属性值
+                        $this.parent().attr("tc_status",status)
+                    });
                 })
-                //    把真实的内容放到页面上
+
+                //把真实的内容放到页面上
                 $(".main").html($panel);
             }
         })

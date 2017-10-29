@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1 保存一条数据,每保存一个数据就需要使用一次document.cookie属性，保存为字符串,这种方法只能一次性获取所有cookie,然后通过split进行切割
+    // ,无法选择某个具体cookie
+    document.cookie ="name=abc";
+    document.cookie ="age=18";
+    //2 获取所有数据
+    var cookie = document.cookie;
+    console.log(cookie);
+    // 3 设置cookie有效期,不过存在时区的差别，下面设置的时间并非浏览器的过期事件，我们处于东八区
+    // 那有什么办法可以解决？  可以使用jquery.cookie 插件
+    document.cookie="id=666;expires="+new Date("2017-10-24 07:00")
+</script>
+</body>
+</html>

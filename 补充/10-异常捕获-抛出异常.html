@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 不推荐做法,
+//    使用太多会影响程序性能
+//    try{
+//        if(a){
+//
+//        }
+//    }catch(e){
+//        console.log("a变量不存在");
+//    }
+//    推荐做法
+//        if(typeof a==="undefined"){
+//           throw new Error("变量不存在")
+//        };
+        function f(a,b) {
+            if(typeof a != "number" || typeof b!="number") throw new Error("请提供数字参数类型");
+            console.log(a + b);
+        }
+        f(1,2);
+        f("b","a");
+</script>
+</body>
+</html>

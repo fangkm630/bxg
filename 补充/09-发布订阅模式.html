@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+观察者模式又叫做发布订阅模式，它定义了一种一对多的关系，
+让多个观察者对象同时监听某一个主题对象，这个主题对象的状态发生改变时就会通知所有观察着对象。
+
+
+其实就是函数的参数是另外一个匿名函数，利用函数的参数执行这个匿名函数[可以传参数或者不传]
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //第一步，创建回调函数
+//    function f(callback) {
+//        console.log("一开始的代码");
+//
+//    }
+//    f(function () {
+//        console.log("回调函数的代码");
+//    })
+    // 第二步 使用callback 实现发布订阅模式，callback保存了匿名函数的内存地址，所以调用它就相当于调用匿名函数
+//    此时callback的参数实际上就是被匿名函数的额参数接收的了
+      function f(callback) {
+          console.log("一开始的代码");
+          callback(100);//输出100
+      }
+      f(function (status) {
+          console.log(status);
+      })
+
+</script>
+
+</body>
+</html>

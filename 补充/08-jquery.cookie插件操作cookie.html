@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+    jquery.cookie.js插件需要依赖jquery才能使用
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--
+        使用jquery和jquery.cookie 好处就是可以方便获取指定的cookie值
+       设置 $.cookie("名称"，"值"，{expire：存储时间})  存储时间可以是具体数字 分数 或者 具体日期
+       获取 $.cookie("名称")
+      删除指定的cookie
+        $.removeCookie("名称");
+    -->
+</head>
+<body>
+
+</body>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script src="../js/lib/jquery.cookie.js"></script>
+<script>
+    $(function () {
+        //第一种类型  绘画cookie
+        // 1。设置值
+        $.cookie("phone","13029238743");
+        $.cookie("email","1231@qq.com");
+        // 2. 获取值
+        var phone = $.cookie("phone");
+        console.log(phone);
+        var email = $.cookie("email");
+        console.log(email);
+        //第二种类型  设置长期cookie【具体指定有效期】
+        $.cookie("address","深圳",{
+            expires:7 //表示存储7天
+//            expires不仅仅可以是日期类型的对象，也可以是以天为单位的数字
+        })
+        $.cookie("tel","0596-33232",{
+            expires:1/24 //存储一个小时后过期
+        })
+        $.cookie("bir","生日",{
+            expires:new Date("2018-01-01 09:00")
+        })
+        // 删除指定的cookie
+        $.removeCookie("bir");
+    })
+</script>
+</html>

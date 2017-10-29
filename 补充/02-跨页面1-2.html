@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+  获取跨页面传值的数据
+  location.seach 可以获取get请求【即url地址？后面的数据】的参数， 获取的数据是以？开头
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var search = location.search;
+    console.log(search);
+//    对获取的数据进行解析
+    function parse(search) {
+//        从第一个字符?开始截取，获取第二个开始的所有字符
+        var str = search.substring(1);
+        var result ={};
+//        分割字符串，产生新数组
+        var strs = str.split("&");
+        console.log(strs);
+//        遍历数组中的每一个元素
+        strs.forEach(function (v) {
+//            再次分割
+            var keyvalue =v.split("=");
+            console.log(keyvalue);
+            var name =keyvalue[0];
+            var value = keyvalue[1];
+            result[name]=value;
+        })
+        return result;
+    }
+   var r = parse(search);
+    console.log(r);
+</script>
+</body>
+</html>
