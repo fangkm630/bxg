@@ -38,12 +38,14 @@ require([
     "jquery",
     "teacher/list",//讲师列表js路径
     "category/list",//课程分类
+    "course/list",//课程管理
+    "course/add",//添加课程
     "bootstrap",
     "datetime",
     "datetimeLang",
     "cookie",
     "common/myModal"  //自定义模态框
-], function ($, teacherList,categoryList) {
+], function ($, teacherList,categoryList,courseList,courseAdd) {
 
     // 1 获取用户登录信息----------------------------
     var userInfoStr = $.cookie("userInfo");
@@ -68,10 +70,11 @@ require([
                 teacherList();
                 break;
             case "course":
-                $(".main").html("课程管理");
+                courseList();
                 break;
             case "addcourse":
-                $(".main").html("添加课程");
+                // $(".main").html("添加课程");
+                courseAdd();
                 break;
             case "category":
                 categoryList();

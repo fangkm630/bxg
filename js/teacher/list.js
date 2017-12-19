@@ -37,7 +37,7 @@ define([
                 var html = art.render(teacherListTpl,{
                     r:result
                 });
-                // 将时间绑定在这个心创建的特定的panel中
+                // 将时间绑定在这个新创建的特定的panel中
                 var $panel =$(html);
 
                 $panel.on("click",".btn-show",function () {

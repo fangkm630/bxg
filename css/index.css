@@ -21,7 +21,6 @@ div.content {
     left: 180px;
     top: 0;
     right: 0;
-    background-color: pink;
     /*如果容器没有任何内容，那么自动呈现800px高度*/
     min-height: 800px;
 }
